@@ -25,12 +25,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             destVC.currentTask = currentTask
             taskTableView.deselectRow(at: indexPath, animated: true)
         }
-        
     }
     
     //MARK :- TABLE VIEW METHODS
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskArray.count
     }
@@ -42,7 +39,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.taskNameLabel.text =  currentTask.taskName
         cell.taskCompletedLabel.text = currentTask.taskCompleted
         cell.priorityZoneLabel.text = currentTask.priorityZone
-        
         return cell
     }
     

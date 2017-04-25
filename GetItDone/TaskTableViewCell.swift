@@ -19,7 +19,6 @@ class TaskTableViewCell: UITableViewCell {
         @IBOutlet var priorityZoneLabel         :UILabel!
         @IBOutlet var taskCompletedLabel   :UILabel!
         
-    
         func setCellTask(task: Task) {
             cellTask = task
         }

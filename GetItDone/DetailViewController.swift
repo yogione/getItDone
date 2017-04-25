@@ -35,6 +35,7 @@ class DetailViewController: UIViewController {
             task.taskName = taskNameTextField.text
             task.dateCreated = NSDate()
             task.priorityZone = priorityZoneTextField.text
+             task.taskCompleted = taskCompletedTextField.text
             
         //    if let _ = currentTask {
          //       task.dateUpdated = NSDate()
