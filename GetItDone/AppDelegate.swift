@@ -13,7 +13,18 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    //MARK :- CORE DATA METHODS
+    func fetchAllTasks() -> [Task] {
+        let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+        let sortDescriptor1 = NSSortDescriptor(key: "taskCompleted", ascending: true)
+        let sortDescriptor2 = NSSortDescriptor(key: "priorityZone", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
+        var results = [Task]()
+        do {  results = try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch let error as NSError {  print("Fetch Error \(error)") }
+        return results
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

@@ -7,17 +7,77 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var managedContext :NSManagedObjectContext!
+    
+    var taskArray = [Task]()
+    @IBOutlet var taskTableView :UITableView!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToEdit" {
+            let indexPath = taskTableView.indexPathForSelectedRow!
+            let currentTask = taskArray[indexPath.row]
+            let destVC = segue.destination as! DetailViewController
+            destVC.currentTask = currentTask
+            taskTableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+    }
+    
+    //MARK :- TABLE VIEW METHODS
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return taskArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let currentTask = taskArray[indexPath.row]
+        cell.textLabel!.text = currentTask.taskName! + ", " + currentTask.priorityZone!
+        cell.detailTextLabel!.text = currentTask.taskName!
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let contactToDelete = taskArray[indexPath.row]
+            managedContext.delete(contactToDelete)
+            appDelegate.saveContext()
+            taskArray = appDelegate.fetchAllTasks()
+            taskTableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.isEditing = false
+        }
+    }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85.0
+    }
+    
+    // life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        managedContext = appDelegate.persistentContainer.viewContext
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        taskArray = appDelegate.fetchAllTasks()
+        print("Count: \(taskArray.count)")
+        taskTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
 
 
