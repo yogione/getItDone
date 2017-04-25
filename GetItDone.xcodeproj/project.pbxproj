@@ -14,6 +14,7 @@
 		16C05D981E400E14000606E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16C05D971E400E14000606E9 /* Assets.xcassets */; };
 		16C05D9B1E400E14000606E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16C05D991E400E14000606E9 /* LaunchScreen.storyboard */; };
 		16C05DA31E40118F000606E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C05DA21E40118F000606E9 /* DetailViewController.swift */; };
+		16EE305C1EAF006200133808 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EE305B1EAF006200133808 /* TaskTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		16C05D9A1E400E14000606E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16C05D9C1E400E14000606E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16C05DA21E40118F000606E9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		16EE305B1EAF006200133808 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				16C05D8D1E400E14000606E9 /* AppDelegate.swift */,
 				16C05DA21E40118F000606E9 /* DetailViewController.swift */,
 				16C05D8F1E400E14000606E9 /* ViewController.swift */,
+				16EE305B1EAF006200133808 /* TaskTableViewCell.swift */,
 				16C05D911E400E14000606E9 /* Main.storyboard */,
 				16C05D971E400E14000606E9 /* Assets.xcassets */,
 				16C05D991E400E14000606E9 /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 			files = (
 				16C05D901E400E14000606E9 /* ViewController.swift in Sources */,
 				16C05D961E400E14000606E9 /* GetItDone.xcdatamodeld in Sources */,
+				16EE305C1EAF006200133808 /* TaskTableViewCell.swift in Sources */,
 				16C05D8E1E400E14000606E9 /* AppDelegate.swift in Sources */,
 				16C05DA31E40118F000606E9 /* DetailViewController.swift in Sources */,
 			);
@@ -307,6 +311,7 @@
 				16C05DA11E400E14000606E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

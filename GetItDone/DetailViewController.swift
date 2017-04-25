@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
         @IBOutlet var taskNameTextField    :UITextField!
         @IBOutlet var priorityZoneTextField     :UITextField!
         @IBOutlet var dateCreatedTextField        :UITextField!
+        @IBOutlet var taskCompletedTextField        :UITextField!
         
         var currentTask  :Task?
         var managedContext :NSManagedObjectContext!
@@ -25,7 +26,7 @@ class DetailViewController: UIViewController {
         
         func display(task: Task){
             taskNameTextField.text = task.taskName
-            dateCreatedTextField.text = task.taskName
+            taskCompletedTextField.text = task.taskCompleted
             priorityZoneTextField.text     = task.priorityZone
             
         }
@@ -72,7 +73,6 @@ class DetailViewController: UIViewController {
             managedContext = appDelegate.persistentContainer.viewContext
             if let task = currentTask {
                 display(task: task)
-                
             }
         }
         

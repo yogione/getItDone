@@ -36,10 +36,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskTableViewCell
         let currentTask = taskArray[indexPath.row]
-        cell.textLabel!.text = currentTask.taskName! + ", " + currentTask.priorityZone!
-        cell.detailTextLabel!.text = currentTask.taskName!
+        cell.setCellTask(task: currentTask)
+        cell.taskNameLabel.text =  currentTask.taskName
+        cell.taskCompletedLabel.text = currentTask.taskCompleted
+        cell.priorityZoneLabel.text = currentTask.priorityZone
+        
         return cell
     }
     
@@ -66,6 +69,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         managedContext = appDelegate.persistentContainer.viewContext
+        taskTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
